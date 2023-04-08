@@ -21,6 +21,10 @@
 #'
 #' @export
 is_active <- function(config) {
-  identical(config, Sys.getenv("R_CONFIG_ACTIVE", "default"))
+  config_env <- Sys.getenv(
+    "R_CONFIG_ACTIVE_APP",
+    Sys.getenv("R_CONFIG_ACTIVE", "default")
+  )
+  identical(config, config_env)
 }
 
